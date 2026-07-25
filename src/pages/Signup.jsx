@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 import countries from 'world-countries'
@@ -89,7 +89,7 @@ function Signup() {
         country,
       })
 
-      navigate('/search')
+      navigate('/signin')
     } catch (error) {
       setSubmitError(getFirebaseErrorMessage(error.code))
     } finally {
@@ -225,6 +225,12 @@ function Signup() {
             {isSubmitting ? 'Creating account…' : 'Sign up'}
           </button>
         </form>
+
+        <div className="signup-footer">
+          <p>
+            Already have an account? <Link to="/signin">Sign in</Link>
+          </p>
+        </div>
       </div>
     </main>
   )

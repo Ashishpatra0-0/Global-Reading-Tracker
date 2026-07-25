@@ -1,4 +1,4 @@
-.signup-page {
+.signin-page {
   flex: 1;
   display: flex;
   align-items: center;
@@ -7,24 +7,24 @@
   text-align: left;
 }
 
-.signup-card {
+.signin-card {
   width: 100%;
   max-width: 420px;
 }
 
-.signup-card h1 {
+.signin-card h1 {
   font-size: 2rem;
   margin: 0 0 0.5rem;
   text-align: center;
 }
 
-.signup-subtitle {
+.signin-subtitle {
   text-align: center;
   margin-bottom: 1.75rem;
   color: var(--text);
 }
 
-.signup-form {
+.signin-form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -81,7 +81,7 @@
   margin: 0;
 }
 
-.signup-submit {
+.signin-submit {
   font: inherit;
   font-weight: 500;
   padding: 0.75rem 1rem;
@@ -94,28 +94,28 @@
   transition: opacity 0.15s;
 }
 
-.signup-submit:hover:not(:disabled) {
+.signin-submit:hover:not(:disabled) {
   opacity: 0.9;
 }
 
-.signup-submit:disabled {
+.signin-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.signup-footer {
+.signin-footer {
   margin-top: 1.5rem;
   text-align: center;
   font-size: 0.95rem;
   color: var(--text);
 }
 
-.signup-footer a {
+.signin-footer a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
 }
 
-.signup-footer a:hover {
+.signin-footer a:hover {
   text-decoration: underline;
 }
