@@ -71,3 +71,16 @@ Requirements:
 - Display this as a simple list, sorted by total count (descending)
 - If no one has marked this book yet, show a friendly message like "Be the first to mark this book!"
 - Handle loading state while the stats are being fetched
+
+## 6. Navbar with Sign Out
+
+**Prompt:**
+
+Create a Navbar component at src/components/Navbar.jsx, and include it at the top of every authenticated page (Search, BookDetail).
+
+Requirements:
+- Show the current logged-in user's name (fetched from their Firestore "users" document) on the right
+- Add a "Sign Out" button next to the user's name that calls Firebase Auth's signOut function, then redirects to /signin
+- Only show this Navbar when a user is actually logged in (hide it on Signup/SignIn pages)
+- Keep it simple and clean, sticky to the top of the page
+
