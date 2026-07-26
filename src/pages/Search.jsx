@@ -1,14 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../firebase'
+import Navbar from '../components/Navbar'
 import './Search.css'
 
 function Search() {
   const navigate = useNavigate()
+  const [user, setUser] = useState(null)
+  const [authLoading, setAuthLoading] = useState(true)
   const [query, setQuery] = useState('')
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [hasSearched, setHasSearched] = useState(false)
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (!currentUser) {
+        navigate('/signin')
+      } else {
+        setUser(currentUser)
+      }
+      setAuthLoading(false)
+    })
+    return () => unsubscribe()
+  }, [navigate])
 
   async function handleSearch(e) {
     e.preventDefault()
@@ -41,9 +58,20 @@ function Search() {
     }
   }
 
+  if (authLoading) {
+    return (
+      <div className="status-container" aria-live="polite">
+        <div className="spinner"></div>
+        <div>Checking authentication...</div>
+      </div>
+    )
+  }
+
   return (
-    <main className="search-page">
-      <div className="search-header">
+    <>
+      <Navbar />
+      <main className="search-page">
+        <div className="search-header">
         <h1>Global Reading Tracker</h1>
         <p className="search-subtitle">
           Search for books by title or author to add to your reading list
@@ -151,7 +179,8 @@ function Search() {
           })}
         </div>
       )}
-    </main>
+      </main>
+    </>
   )
 }
 

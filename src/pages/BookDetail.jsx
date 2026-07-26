@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore'
 import { auth, db } from '../firebase'
 import CountryStats from '../components/CountryStats'
+import Navbar from '../components/Navbar'
 import './BookDetail.css'
 
 function BookDetail() {
@@ -208,8 +209,10 @@ function BookDetail() {
   const description = volumeInfo.description || 'No description available.'
 
   return (
-    <main className="book-detail-page">
-      <div className="back-header">
+    <>
+      <Navbar />
+      <main className="book-detail-page">
+        <div className="back-header">
         <Link to="/search" className="back-link">
           ← Back to Search
         </Link>
@@ -285,7 +288,8 @@ function BookDetail() {
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   )
 }
 
