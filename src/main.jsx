@@ -5,6 +5,7 @@ import './index.css'
 import Signup from './pages/Signup.jsx'
 import Search from './pages/Search.jsx'
 import SignIn from './pages/SignIn.jsx'
+import BookDetail from './pages/BookDetail.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/book/:bookId" element={<BookDetail />} />
         <Route path="*" element={<Navigate to="/signin" replace />} />
       </Routes>
     </BrowserRouter>

@@ -59,3 +59,15 @@ Requirements:
 - Handle loading and error states
 - Require the user to be logged in to access this page; redirect to /signin if not authenticated
 
+## 5. Country Stats
+
+**Prompt:**
+
+Create a Country Stats section within src/pages/BookDetail.jsx (or as a separate component src/components/CountryStats.jsx, imported into BookDetail).
+
+Requirements:
+- Query Firestore's "userBooks" collection for all documents matching the current book's bookId
+- Group the results by country, counting how many have status "want-to-read" and how many have "have-read" for each country
+- Display this as a simple list, sorted by total count (descending)
+- If no one has marked this book yet, show a friendly message like "Be the first to mark this book!"
+- Handle loading state while the stats are being fetched
