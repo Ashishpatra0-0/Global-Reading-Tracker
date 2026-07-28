@@ -12,6 +12,7 @@
 .search-header {
   text-align: center;
   margin-bottom: 2rem;
+  margin-top: 12px;
 }
 
 .search-header h1 {
@@ -21,6 +22,7 @@
 .search-subtitle {
   color: var(--text);
   margin-bottom: 1.5rem;
+  margin-top: 25px;
 }
 
 .search-form {
