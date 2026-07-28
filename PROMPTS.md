@@ -84,3 +84,22 @@ Requirements:
 - Only show this Navbar when a user is actually logged in (hide it on Signup/SignIn pages)
 - Keep it simple and clean, sticky to the top of the page
 
+## How AI helped throughout
+
+AI assistance was central to building each feature of this app. For every component — Signup, Sign In, Search, Book Detail, Country Stats, and the Navbar — I wrote detailed prompts specifying exact file locations, required fields, data structure, validation rules, and accessibility requirements, rather than vague one-line requests. This meant the generated code was usually functionally correct on the first pass.
+
+AI was especially useful for:
+- Scaffolding Firebase Authentication (signup/login) and Firestore read/write logic, which I was unfamiliar with beforehand.
+- Building the Google Books API integration, including handling loading and error states cleanly.
+- Structuring Firestore data (the "users" and "userBooks" collections) in a way that supported querying and grouping by country for the stats feature.
+- Quickly producing consistent, accessible form components (labels, aria-invalid, aria-describedby) across multiple pages without me having to write repetitive boilerplate each time.
+
+Overall, AI significantly sped up development, but every generated feature still required manual testing and, in several cases, debugging before it actually worked correctly (see Manual Corrections below).
+
+## Manual corrections
+
+1. **Fixed a malformed API URL causing 429 errors.** In BookDetail.jsx, the AI-generated Google Books API fetch call was built as `${bookId}&key=${apiKey}` instead of `${bookId}?key=${apiKey}`. Since this endpoint has no existing query string before the key parameter, the missing `?` meant my API key was never actually being sent — every request was hitting Google's shared anonymous rate limit instead of using my own quota, even though a key was configured. I found this by inspecting the actual failing request URL in the browser's Network tab, noticed the incorrect character, and corrected it manually.
+
+3. **Fixed unreadable text color on the Book Detail page.** The AI-generated styling for the book title and description used a light gray/white color that was nearly invisible against the white card background — likely copied from styles meant for a dark background elsewhere in the app. I inspected the elements in the browser, identified the CSS classes responsible, and corrected the color values to a dark color for proper readability.
+
+4. **Adjusted spacing on the Search page header.** The main heading ("Global Reading Tracker") and subtitle text were rendering too close together, making the page feel cramped. I identified the relevant CSS classes and added spacing between them for better visual separation.
