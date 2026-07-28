@@ -130,7 +130,7 @@
   font-size: 2.25rem;
   font-weight: 700;
   margin: 0 0 0.5rem;
-  color: var(--text-h);
+  color: #1a1a1a;
   line-height: 1.2;
 }
 
@@ -150,7 +150,7 @@
 .detail-description-section h2 {
   font-size: 1.25rem;
   margin: 0 0 1rem;
-  color: var(--text-h);
+  color: #1a1a1a;
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
 }
